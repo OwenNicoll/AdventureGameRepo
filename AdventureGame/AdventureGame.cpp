@@ -10,7 +10,7 @@
 #include "Area.h"
 
 
-
+// Function to print Player values
 void PrintPlayer(Player instance)
 {
     std::cout << "Name: " << instance.name << "/n";
