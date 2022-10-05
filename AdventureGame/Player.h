@@ -5,6 +5,7 @@ class Player
 {
 public:
 	std::string name;
+	std::string currentArea;
 	std::string description;
 	int health;
 	int damage;
