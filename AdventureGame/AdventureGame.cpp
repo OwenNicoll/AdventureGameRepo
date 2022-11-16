@@ -15,50 +15,48 @@
 
 int main()
 {
- 
-
-   
+  
    // Three instances of Area class
 
     // Forest Area
     Area forest;
+    Area* forestPtr = &forest;
     forest.name = "Forest";
     forest.description = "A damp forest full of wildlife";
 
+
     // Village Area
     Area village;
+    Area* villagePtr = &village;
     village.name = "Village";
     village.description = "A quiet, peaceful village on the edge of a forest";
 
     // Castle Area
     Area castle;
+    Area* castlePtr = &castle;
     castle.name = "Castle";
     castle.description = "A guarded castle on a hilltop";
 
     // Connected Areas
-    forest.connectedAreas.push_back(village);
-    village.connectedAreas.push_back(forest);
-    village.connectedAreas.push_back(castle);
-    castle.connectedAreas.push_back(village);
-
-    village.PrintArea();
+    forest.connectedAreas.push_back(villagePtr);
+    village.connectedAreas.push_back(forestPtr);
+    village.connectedAreas.push_back(castlePtr);
+    castle.connectedAreas.push_back(villagePtr);
 
     // Player
     Player player1;
     player1.name = "Player One";
-    player1.currentArea = forest;
+    player1.currentArea = &forest;
     player1.health = 100;
 
-    player1.PrintPlayer();
-
     std::map<std::string, Area> areaMap;
-    areaMap["Here"] = player1.currentArea;
     areaMap["Forest"] = forest;
     areaMap["Village"] = village;
     
    
     // String to hold players command
     std::string command;
+    std::string target;
 
     // Get command from player
     std::cout << "Enter Command.....";
@@ -66,19 +64,17 @@ int main()
 
     if (command == "Look")
     {
-        std::cout << "Look Where?" << std::endl;
-        std::string target;
+        std::cout << "Look Where?..." << std::endl;
         std::cin >> target;
-        areaMap[target].PrintArea();     
+        areaMap[target].Look();
     }
     if (command == "Go")
     {
-        std::cout << "Go Where?" << std::endl;
-        std::cout << player1.currentArea.name;
-        std::string target;
+        std::cout << "Go Where?..." << std::endl;
+        std::cout << player1.currentArea->name;
         std::cin >> target;
-        player1.currentArea = areaMap[target];
-        std::cout << player1.currentArea.name;
+        player1.Go(&areaMap[target]);
+        std::cout << player1.currentArea->name;
     }
 
    

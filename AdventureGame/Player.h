@@ -7,12 +7,14 @@ class Player
 public:
 
 	Player();
-	Player(std::string name,  Area currentArea, int health, std::vector<std::string> inventory);
+	Player(std::string name,  Area* currentArea, int health, std::vector<std::string> inventory);
 
-	void PrintPlayer();
+	void Go(Area* targetArea);
+
+	
 
 	std::string name;
-	Area currentArea;
+	Area* currentArea;
 	
 	int health;
 	std::vector<std::string> inventory;

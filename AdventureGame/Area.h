@@ -5,15 +5,13 @@ class Area
 {
 public:
 	Area();
-	Area(std::string name, std::string description, std::vector<Area> connectedAreas);
+	Area(std::string name, std::string description, std::vector<Area*> connectedAreas);
 
-	void PrintArea();
-
-	void Look(Area target);
+	void Look();
 		
 	std::string name;
 	std::string description;
-	std::vector<Area> connectedAreas;
+	std::vector<Area*> connectedAreas;
 	
 	
 };  

@@ -5,34 +5,30 @@
 
 Player::Player()
 	:name("")
-	,currentArea()
+	,currentArea(nullptr)
 	,health(100)
 	,inventory()
 {
 }
 
-Player::Player(std::string name, Area currentArea, int health, std::vector<std::string> inventory)
+Player::Player(std::string name, Area* currentArea, int health, std::vector<std::string> inventory)
+	:name(name)
+	,currentArea(nullptr)
+	,health(health)
+	,inventory()
 	
 {
 }
 
-void Player::PrintPlayer()
+void Player::Go(Area* targetArea)
 {
-	std::cout << "Name: " << name << std::endl;
-	std::cout << "Current Area: " << currentArea.name << std::endl;
-	std::cout << "Health: " << health << std::endl;
-	std::cout << "inventory: " << std::endl;
-	if (inventory.size() != 0);
+	for (int i = 0; i < currentArea->connectedAreas.size(); ++i)
 	{
-		for (int i = 0; i < inventory.size(); ++i)
+		if (currentArea->connectedAreas[i]->name == targetArea->name)
 		{
-			std::cout << inventory[i] << std::endl;
+			*currentArea = *targetArea;
 		}
 	}
-	if (inventory.size() > 0)
-	{
-		std::cout << "Inventory is empty" << std::endl;
-	}
-	
-	
 }
+
+
