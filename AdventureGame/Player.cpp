@@ -6,14 +6,16 @@
 Player::Player()
 	:name("")
 	,currentArea(nullptr)
+	,damage(100)
 	,health(100)
 	,inventory()
 {
 }
 
-Player::Player(std::string name, Area* currentArea, int health, std::vector<std::string> inventory)
+Player::Player(std::string name, Area* currentArea,int damage, int health, std::vector<std::string> inventory)
 	:name(name)
 	,currentArea(nullptr)
+	,damage(damage)
 	,health(health)
 	,inventory()
 	
@@ -22,13 +24,83 @@ Player::Player(std::string name, Area* currentArea, int health, std::vector<std:
 
 void Player::Go(Area* targetArea)
 {
-	for (int i = 0; i < currentArea->connectedAreas.size(); ++i)
+	for (int i = 0; i < currentArea->GetConnectedAreas().size(); ++i)
 	{
-		if (currentArea->connectedAreas[i]->name == targetArea->name)
+		if (currentArea->GetConnectedAreas()[i]->GetName() == targetArea->GetName())
 		{
 			*currentArea = *targetArea;
-		}
+			std::cout << "You enter the " << GetCurrentArea()->GetName() << std::endl;
+			return;
+		}		
 	}
 }
+
+void Player::Attack(Monster target)
+{
+	
+	if (currentArea->GetName() == target.GetCurrentArea()->GetName())
+	{
+		health = health - target.GetDamage();
+		target.RemoveHealth(damage);
+		std::cout << "Player health: " << GetHealth() << std::endl;
+		std::cout << target.GetHealth() << std::endl;
+	}
+	else
+	{
+		std::cout << "Invalid Target..." << std::endl;
+	}
+	if (target.GetHealth() <= 0)
+	{
+		std::cout << "You killed the " << target.GetName() << std::endl;
+	}
+}
+	
+
+std::string Player::GetName()
+{
+	return name;
+}
+
+void Player::SetName(std::string newName)
+{
+	name = newName;
+}
+
+int Player::GetHealth()
+{
+	return health;
+}
+
+void Player::SetHealth(int newHealth)
+{
+	health = newHealth;
+}
+
+void Player::RemoveHealth(int healthToRemove)
+{
+	health -= healthToRemove;
+}
+
+int Player::GetDamage()
+{
+	return damage;
+}
+
+void Player::SetDamage(int newDamage)
+{
+	damage = newDamage;
+}
+
+Area* Player::GetCurrentArea()
+{
+	return currentArea;
+}
+
+void Player::SetCurrentArea(Area* newArea)
+{
+	currentArea = newArea;
+}
+
+
 
 
