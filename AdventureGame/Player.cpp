@@ -30,7 +30,13 @@ void Player::Go(Area* targetArea)
 		{
 			*currentArea = *targetArea;
 			std::cout << "You enter the " << GetCurrentArea()->GetName() << std::endl;
-			return;
+			std::cout << std::endl;
+			std::cout << "Description: " << currentArea->GetDescription() << std::endl;
+			std::cout << std::endl;
+			for (int i = 0; i < currentArea->GetConnectedAreas().size(); ++i)
+			{
+				std::cout << targetArea->GetConnectedAreas()[i]->GetName() << std::endl;
+			}
 		}		
 	}
 }
