@@ -9,6 +9,7 @@
 #include "Area.h"
 #include "Monster.h"
 #include<map>
+#include <stdlib.h>
 #include<Windows.h>
 
 
@@ -39,7 +40,6 @@ int main()
     castle.SetDescription("A small, guarded keep upon a hilltop");
 
 
-
     // Connected Areas
     forest.AddConnectedArea(villagePtr);
     village.AddConnectedArea(forestPtr);
@@ -57,15 +57,15 @@ int main()
     Player player1;
     player1.SetName("Player One");
     player1.SetCurrentArea(forestPtr);
-    player1.SetHealth(100);
-    player1.SetDamage(100);
+    player1.SetHealth(1);
+    player1.SetDamage(0);
 
     // Area Map
     std::map<std::string, Area> areaMap;
     areaMap["Forest"] = forest;
     areaMap["Village"] = village;
     areaMap["Castle"] = castle;
-
+ 
     
     // Monster name map
     std::map<std::string, Monster> monsterNameMap;
@@ -78,7 +78,7 @@ int main()
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
     // Start Game
-   
+   // Intro description
     std::cout << "You find yourself in a large woodland, there is a village ahead" << std::endl;
     do
     {
@@ -92,15 +92,18 @@ int main()
         std::cout << std::endl;
         std::cout << "Enter Command.....";
         std::cin >> command;
+        
 
         // If player types "Look"
         if (command == "Look")
         {
+            system("CLS");
             SetConsoleTextAttribute(h, 7);
             std::cout << "Look Where?..." << std::endl;
             std::cout << std::endl;
             SetConsoleTextAttribute(h, 6);
             std::cin >> target;
+            system("CLS");
             SetConsoleTextAttribute(h, 7);
             std::cout << std::endl;
             areaMap[target].Look();
@@ -109,10 +112,12 @@ int main()
         // If player types "Go"
         if (command == "Go")
         {
+            system("CLS");
             SetConsoleTextAttribute(h, 7);
             std::cout << "Go Where?..." << std::endl;
             SetConsoleTextAttribute(h, 6);
             std::cin >> target;
+            system("CLS");
             SetConsoleTextAttribute(h, 7);
             player1.Go(&areaMap[target]);
             std::cout << std::endl;
@@ -122,18 +127,19 @@ int main()
         // If player types "Attack"
         if (command == "Attack")
         {
+            system("CLS");
             SetConsoleTextAttribute(h, 7);
             std::cout << "Attack what?..." << std::endl;
             SetConsoleTextAttribute(h, 6);
             std::cin >> target;
+            system("CLS");
             SetConsoleTextAttribute(h, 7);
             player1.Attack(monsterNameMap[target]);
-
-
-        }
-    } while (command != "Exit");        // Loop back until player types "Exit"
-    
    
+        }
+    } while ((command != "Exit"));    // Loop back until player types "Exit"
+    
+    
 
     
 

@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include "Area.h"
-class Monster
+#include "Creature.h"
+class Monster : public Creature
 	
 {
 public:
@@ -13,15 +14,6 @@ public:
 	std::string GetName();
 	void SetName(std::string newName);
 
-	// Health Getter and Setter
-	int GetHealth();
-	void SetHealth(int newHealth);
-
-	// Damage Getter and Setter
-	int GetDamage();
-	void SetDamage(int newDamage);
-	void RemoveHealth(int healthToRemove);
-
 	// Current Area
 	Area* GetCurrentArea();
 	void SetCurrentArea(Area* newArea);
@@ -29,8 +21,6 @@ public:
 
 private:
 	std::string name;
-	int health;
-	int damage;
 	Area* currentArea;
 
 

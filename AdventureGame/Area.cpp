@@ -5,15 +5,13 @@
 
 
 Area::Area()
-	: name("")
-	, description("")
+	
+	
 {
 }
 
 Area::Area(std::string name, std::string description, std::vector<Area*> connectedAreas)
-	:name(name)
-	, description(description)
-	,connectedAreas()
+	:connectedAreas()
 	
 {
 }
@@ -22,6 +20,7 @@ Area::Area(std::string name, std::string description, std::vector<Area*> connect
 
 void Area::Look()
 {
+	std::cout << "Description: " << std::endl;
 	std::cout << description << std::endl;
 	std::cout << std::endl;
 	std::cout << "Connected Areas: " << std::endl;

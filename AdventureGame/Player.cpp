@@ -6,38 +6,42 @@
 Player::Player()
 	:name("")
 	,currentArea(nullptr)
-	,damage(100)
-	,health(100)
 	,inventory()
+	,isDead(false)
 {
 }
 
 Player::Player(std::string name, Area* currentArea,int damage, int health, std::vector<std::string> inventory)
 	:name(name)
 	,currentArea(nullptr)
-	,damage(damage)
-	,health(health)
 	,inventory()
-	
+	,isDead(false)
 {
 }
 
 void Player::Go(Area* targetArea)
 {
-	for (int i = 0; i < currentArea->GetConnectedAreas().size(); ++i)
+	for (int i = 0; i < targetArea->GetConnectedAreas().size(); ++i)
 	{
-		if (currentArea->GetConnectedAreas()[i]->GetName() == targetArea->GetName())
+		if (targetArea->GetConnectedAreas()[i]->GetName() == currentArea->GetName())
 		{
 			*currentArea = *targetArea;
 			std::cout << "You enter the " << GetCurrentArea()->GetName() << std::endl;
 			std::cout << std::endl;
-			std::cout << "Description: " << currentArea->GetDescription() << std::endl;
+			std::cout << "Description: " << std::endl;
+			std::cout << currentArea->GetDescription() << std::endl;
 			std::cout << std::endl;
-			for (int i = 0; i < currentArea->GetConnectedAreas().size(); ++i)
+			std::cout << "Connected Areas: " << std::endl;
+			for (int i = 0; i < targetArea->GetConnectedAreas().size(); ++i)
 			{
 				std::cout << targetArea->GetConnectedAreas()[i]->GetName() << std::endl;
 			}
+			return;
 		}		
+		else
+		{
+			std::cout << "That is too far away..." << std::endl;
+		}
 	}
 }
 
@@ -72,30 +76,7 @@ void Player::SetName(std::string newName)
 	name = newName;
 }
 
-int Player::GetHealth()
-{
-	return health;
-}
 
-void Player::SetHealth(int newHealth)
-{
-	health = newHealth;
-}
-
-void Player::RemoveHealth(int healthToRemove)
-{
-	health -= healthToRemove;
-}
-
-int Player::GetDamage()
-{
-	return damage;
-}
-
-void Player::SetDamage(int newDamage)
-{
-	damage = newDamage;
-}
 
 Area* Player::GetCurrentArea()
 {

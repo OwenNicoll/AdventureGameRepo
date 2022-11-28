@@ -1,7 +1,8 @@
 #pragma once
+#include "Thing.h"
 #include <string>
 #include <vector>
-class Area
+class Area : public Thing
 {
 public:
 	Area();
@@ -23,8 +24,6 @@ public:
 	void PrintConnectedAreas();
 
 private:
-	std::string name;
-	std::string description;
 	std::vector<Area*> connectedAreas;
 	
 	

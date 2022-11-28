@@ -3,7 +3,7 @@
 #include <vector>
 #include "Area.h"
 #include "Monster.h"
-class Player
+class Player : public Creature
 {
 public:
 
@@ -18,18 +18,10 @@ public:
 	std::string GetName();
 	void SetName(std::string newName);
 
-	// Health Setter and Getter
-	int GetHealth();
-	void SetHealth(int newHealth);
-	void RemoveHealth(int healthToRemove);
-
-	// Damage Getter and Setter
-	int GetDamage();
-	void SetDamage(int newDamage);
-
 	// Current Area Setter and Getter
 	Area* GetCurrentArea();
 	void SetCurrentArea(Area* newArea);
+	
 
 	
 
@@ -37,8 +29,8 @@ private:
 
 	std::string name;
 	Area* currentArea;
-	int damage;
-	int health;
 	std::vector<std::string> inventory;
+	bool isDead;
+	
 };
 
