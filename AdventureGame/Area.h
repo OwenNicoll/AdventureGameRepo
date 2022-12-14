@@ -1,12 +1,13 @@
 #pragma once
 #include "Thing.h"
+#include "Item.h"
 #include <string>
 #include <vector>
 class Area : public Thing
 {
 public:
 	Area();
-	Area(std::string name, std::string description, std::vector<Area*> connectedAreas);
+	Area(std::string name, std::string description);
 
 	void Look();
 	
@@ -23,8 +24,11 @@ public:
 	void AddConnectedArea(Area* newAreaPtr);
 	void PrintConnectedAreas();
 
+	void AddItem(Item newItem);
+
 private:
 	std::vector<Area*> connectedAreas;
+	std::vector<Item> itemVector;
 	
 	
 };  

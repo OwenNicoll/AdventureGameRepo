@@ -16,9 +16,10 @@ void Monster::SetName(std::string newName)
     name = newName;
 }
 
-Monster::Monster(std::string name, int health, int damage, Area* currentArea)
+Monster::Monster(std::string name, Area* currentArea, int health, int damage)
     :name(name)
     ,currentArea(currentArea)
+    ,Creature(health, damage)
    
 {
 }

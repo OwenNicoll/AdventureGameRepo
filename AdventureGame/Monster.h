@@ -8,7 +8,7 @@ class Monster : public Creature
 {
 public:
 	Monster();
-	Monster(std::string name, int health, int damage, Area* currentArea);
+	Monster(std::string name, Area* currentArea, int health, int damage);
 
 	// Name Getter and Setter
 	std::string GetName();

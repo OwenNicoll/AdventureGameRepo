@@ -21,23 +21,20 @@ int main()
    // Area Instances
 
     // Forest Area
-    Area forest;
+    Area forest("Forest", "A dark, damp woodland full of wildlife");
     Area* forestPtr = &forest;
-    forest.SetName("Forest");
-    forest.SetDescription("A dark, damp woodland full of wildlife");
+    
 
 
     // Village Area
-    Area village;
+    Area village("Village", "A loneley village weary of strangers, a Highwayman stands guard");
     Area* villagePtr = &village;
-    village.SetName("Village");
-    village.SetDescription("A loneley village weary of strangers, a Highwayman stands guard");
+   
 
     // Castle Area
-    Area castle;
+    Area castle("Castle", "A small, guarded keep upon a hilltop");
     Area* castlePtr = &castle;
-    castle.SetName("Castle");
-    castle.SetDescription("A small, guarded keep upon a hilltop");
+ 
 
 
     // Connected Areas
@@ -47,18 +44,18 @@ int main()
     castle.AddConnectedArea(villagePtr);
 
     // Monsters
-    Monster highwayman;
-    highwayman.SetName("Highwayman");
-    highwayman.SetDamage(2);
-    highwayman.SetHealth(50);
-    highwayman.SetCurrentArea(villagePtr);
+    Monster highwayman("Highwayman", villagePtr, 20, 5);
+    
     
     // Player
-    Player player1;
-    player1.SetName("Player One");
-    player1.SetCurrentArea(forestPtr);
-    player1.SetHealth(1);
-    player1.SetDamage(0);
+    Player player1("Player One", forestPtr, 100, 20);
+    
+    // Items
+    Item stick("Stick", "Its a stick");
+    player1.AddToInventory(stick);
+ 
+
+   
 
     // Area Map
     std::map<std::string, Area> areaMap;
@@ -76,6 +73,19 @@ int main()
     std::string target;
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Start Game
    // Intro description

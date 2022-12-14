@@ -10,8 +10,9 @@ Area::Area()
 {
 }
 
-Area::Area(std::string name, std::string description, std::vector<Area*> connectedAreas)
+Area::Area(std::string name, std::string description)
 	:connectedAreas()
+	,Thing(name, description)
 	
 {
 }
@@ -67,4 +68,9 @@ void Area::PrintConnectedAreas()
 	{
 		std::cout << connectedAreas[i]->GetName() << std::endl;
 	}
+}
+
+void Area::AddItem(Item newItem)
+{
+	itemVector.push_back(newItem);
 }

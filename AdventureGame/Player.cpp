@@ -11,9 +11,10 @@ Player::Player()
 {
 }
 
-Player::Player(std::string name, Area* currentArea,int damage, int health, std::vector<std::string> inventory)
+Player::Player(std::string name, Area* currentArea,int health, int damage)
 	:name(name)
-	,currentArea(nullptr)
+	,currentArea(currentArea)
+	,Creature(health, damage)
 	,inventory()
 	,isDead(false)
 {
@@ -86,6 +87,21 @@ Area* Player::GetCurrentArea()
 void Player::SetCurrentArea(Area* newArea)
 {
 	currentArea = newArea;
+}
+
+void Player::AddToInventory(Item newItem)
+{
+	inventory.push_back(newItem);
+}
+
+void Player::PrintInventory()
+{
+	std::cout << "INVENTORY CONTENTS: " << std::endl;
+
+	for (int i = 0; i < inventory.size(); ++i)
+	{
+		std::cout << "  -" << inventory[i].GetName() << std::endl;
+	}
 }
 
 

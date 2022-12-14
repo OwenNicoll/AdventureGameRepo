@@ -2,13 +2,14 @@
 #include <string>
 #include <vector>
 #include "Area.h"
+#include "Item.h"
 #include "Monster.h"
 class Player : public Creature
 {
 public:
 
 	Player();
-	Player(std::string name,  Area* currentArea, int damage, int health, std::vector<std::string> inventory);
+	Player(std::string name,  Area* currentArea, int health, int damage);
 
 	void Go(Area* targetArea);
 
@@ -22,14 +23,15 @@ public:
 	Area* GetCurrentArea();
 	void SetCurrentArea(Area* newArea);
 	
-
+	void AddToInventory(Item newItems);
 	
+	void PrintInventory();
 
 private:
 
 	std::string name;
 	Area* currentArea;
-	std::vector<std::string> inventory;
+	std::vector<Item> inventory;
 	bool isDead;
 	
 };
