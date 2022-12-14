@@ -8,6 +8,7 @@
 #include "Item.h"
 #include "Area.h"
 #include "Monster.h"
+#include "Potion.h"
 #include<map>
 #include <stdlib.h>
 #include<Windows.h>
@@ -53,8 +54,12 @@ int main()
     // Items
     Item stick("Stick", "Its a stick");
     player1.AddToInventory(stick);
- 
+    Potion healthPot("Health Potion", "It heals things");
 
+    healthPot.Use(&player1);
+    std::cout << player1.GetHealth();
+
+    healthPot.Use(stick);
    
 
     // Area Map

@@ -15,3 +15,13 @@ Potion::Potion(std::string newName, std::string newDescription)
 Potion::~Potion()
 {
 }
+
+void Potion::Use(Creature* target)
+{
+	target->SetHealth(200);
+}
+
+void Potion::Use(Thing target)
+{
+	std::cout << "Nothing interesting happens..." << std::endl;
+}

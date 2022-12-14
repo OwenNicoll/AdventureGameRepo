@@ -11,5 +11,8 @@ public:
     Potion();
     Potion(std::string newName, std::string newDescription);
     ~Potion();
+
+    void Use(Creature* target);
+    void Use(Thing target);
 };
 
