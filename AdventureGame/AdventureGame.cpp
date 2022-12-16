@@ -35,6 +35,8 @@ int main()
     // Castle Area
     Area castle("Castle", "A small, guarded keep upon a hilltop");
     Area* castlePtr = &castle;
+
+    //
  
 
 
@@ -53,13 +55,13 @@ int main()
     
     // Items
     Item stick("Stick", "Its a stick");
-    player1.AddToInventory(stick);
-    Potion healthPot("Health Potion", "It heals things");
+  //  player1.AddToInventory(stick);
+    Potion healthPot("Potion", "It heals things");
 
     healthPot.Use(&player1);
     std::cout << player1.GetHealth();
 
-    healthPot.Use(stick);
+   
    
 
     // Area Map
@@ -73,6 +75,11 @@ int main()
     std::map<std::string, Monster> monsterNameMap;
     monsterNameMap["Highwayman"] = highwayman;
    
+    // Item map
+    std::map<std::string, Item> itemMap;
+    itemMap[healthPot.GetName()] = healthPot;
+
+
     // String to hold players command
     std::string command;
     std::string target;
@@ -85,16 +92,16 @@ int main()
 
 
 
-
-
-
-
+ 
+    forest.AddItem(&stick);
+  
 
 
 
     // Start Game
    // Intro description
     std::cout << "You find yourself in a large woodland, there is a village ahead" << std::endl;
+    forest.PrintItems();
     do
     {
         SetConsoleTextAttribute(h, 6);
@@ -102,7 +109,7 @@ int main()
         std::cout << std::endl;
         std::cout << "Your Current Location: " << player1.GetCurrentArea()->GetName() << std::endl;
         std::cout << std::endl;
-        std::cout << "Commands: Look, Go, Attack, Exit." << std::endl;
+        std::cout << "Commands: Look, Go, Attack, Take, Use, Exit." << std::endl;
         // Get command from player
         std::cout << std::endl;
         std::cout << "Enter Command.....";
@@ -151,6 +158,20 @@ int main()
             SetConsoleTextAttribute(h, 7);
             player1.Attack(monsterNameMap[target]);
    
+        }
+
+        // If player types "Take"
+        if (command == "Take")
+        {
+            system("CLS");
+            SetConsoleTextAttribute(h, 7);
+            std::cout << "Take what?..." << std::endl;
+            SetConsoleTextAttribute(h, 6);
+            std::cin >> target;
+            system("CLS");
+            SetConsoleTextAttribute(h, 7);
+            player1.Take(itemMap[target]);
+
         }
     } while ((command != "Exit"));    // Loop back until player types "Exit"
     

@@ -13,6 +13,8 @@ public:
 
 	void Go(Area* targetArea);
 
+	void PotionEffect();
+
 	void Attack(Monster target);
 
 	// Name Setter and Getter
@@ -24,6 +26,8 @@ public:
 	void SetCurrentArea(Area* newArea);
 	
 	void AddToInventory(Item newItems);
+
+	void Take(Item newItem);
 	
 	void PrintInventory();
 

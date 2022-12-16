@@ -11,7 +11,7 @@ public:
 	Item(std::string newName, std::string newDescription);
 	~Item();
 
-	void Use(Creature* target);
+	
 	void Use(Thing target);
 
 	std::string name;

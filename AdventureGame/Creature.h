@@ -7,6 +7,10 @@ public:
 	Creature(int newHealth, int newDamage);
 	~Creature();
 
+
+	virtual void PotionEffect();
+
+
 	// Getters
 	int GetHealth();
 	int GetDamage();

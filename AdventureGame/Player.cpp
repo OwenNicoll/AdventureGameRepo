@@ -32,6 +32,8 @@ void Player::Go(Area* targetArea)
 			std::cout << "Description: " << std::endl;
 			std::cout << currentArea->GetDescription() << std::endl;
 			std::cout << std::endl;
+			currentArea->PrintItems();
+			std::cout << std::endl;
 			std::cout << "Connected Areas: " << std::endl;
 			for (int i = 0; i < targetArea->GetConnectedAreas().size(); ++i)
 			{
@@ -44,6 +46,13 @@ void Player::Go(Area* targetArea)
 			std::cout << "That is too far away..." << std::endl;
 		}
 	}
+}
+
+void Player::PotionEffect()
+{
+	health += 50;
+
+	std::cout << "You heal yourself with the potion" << std::endl;
 }
 
 void Player::Attack(Monster target)
@@ -92,6 +101,19 @@ void Player::SetCurrentArea(Area* newArea)
 void Player::AddToInventory(Item newItem)
 {
 	inventory.push_back(newItem);
+}
+
+void Player::Take(Item newItem)
+{
+	for (int i = 0; i < currentArea->GetItems().size(); ++i)
+	{
+		if (newItem.name == currentArea->GetItems()[i]->GetName())
+		{
+			AddToInventory(newItem);
+		}
+	}
+
+	PrintInventory();
 }
 
 void Player::PrintInventory()

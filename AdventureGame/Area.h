@@ -24,11 +24,15 @@ public:
 	void AddConnectedArea(Area* newAreaPtr);
 	void PrintConnectedAreas();
 
-	void AddItem(Item newItem);
+	void AddItem(Item* newItem);
+
+	void PrintItems();
+
+	std::vector<Item*> GetItems();
 
 private:
 	std::vector<Area*> connectedAreas;
-	std::vector<Item> itemVector;
+	std::vector<Item*> itemVector;
 	
 	
 };  

@@ -10,6 +10,9 @@ public:
 	Monster();
 	Monster(std::string name, Area* currentArea, int health, int damage);
 
+
+	void PotionEffect();
+
 	// Name Getter and Setter
 	std::string GetName();
 	void SetName(std::string newName);

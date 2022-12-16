@@ -24,6 +24,8 @@ void Area::Look()
 	std::cout << "Description: " << std::endl;
 	std::cout << description << std::endl;
 	std::cout << std::endl;
+	PrintItems();
+	std::cout << std::endl;
 	std::cout << "Connected Areas: " << std::endl;
 	for (int i = 0; i < connectedAreas.size(); ++i)
 	{
@@ -70,7 +72,21 @@ void Area::PrintConnectedAreas()
 	}
 }
 
-void Area::AddItem(Item newItem)
+void Area::AddItem(Item* newItem)
 {
 	itemVector.push_back(newItem);
+}
+
+void Area::PrintItems()
+{
+	std::cout << "ITEMS: " << std::endl;
+	for (int i = 0; i < itemVector.size(); ++i)
+	{
+		std::cout << " -" << itemVector[i]->GetName() << std::endl;
+	}
+}
+
+std::vector<Item*> Area::GetItems()
+{
+	return itemVector;
 }

@@ -16,6 +16,10 @@ Creature::~Creature()
 {
 }
 
+void Creature::PotionEffect()
+{
+}
+
 int Creature::GetHealth()
 {
 	return health;

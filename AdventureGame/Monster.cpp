@@ -1,4 +1,5 @@
 #include "Monster.h"
+#include <iostream>
 
 Monster::Monster()
     :name(name)
@@ -22,6 +23,13 @@ Monster::Monster(std::string name, Area* currentArea, int health, int damage)
     ,Creature(health, damage)
    
 {
+}
+
+void Monster::PotionEffect()
+{
+    health -= 50;
+
+    std::cout << "You damage the "<< name <<" with the potion" << std::endl;
 }
 
 Area* Monster::GetCurrentArea()

@@ -1,6 +1,7 @@
 #include "Item.h"
 #include <iostream>
 Item::Item()
+	:name("Naw")
 {
 }
 
@@ -13,10 +14,6 @@ Item::~Item()
 {
 }
 
-void Item::Use(Creature* target)
-{
-	std::cout << "Nothing interesting happens..." << std::endl;
-}
 
 void Item::Use(Thing target)
 {

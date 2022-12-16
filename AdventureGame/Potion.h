@@ -13,6 +13,6 @@ public:
     ~Potion();
 
     void Use(Creature* target);
-    void Use(Thing target);
+    
 };
 

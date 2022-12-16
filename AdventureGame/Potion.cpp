@@ -18,10 +18,7 @@ Potion::~Potion()
 
 void Potion::Use(Creature* target)
 {
-	target->SetHealth(200);
+	target->PotionEffect();
 }
 
-void Potion::Use(Thing target)
-{
-	std::cout << "Nothing interesting happens..." << std::endl;
-}
+
