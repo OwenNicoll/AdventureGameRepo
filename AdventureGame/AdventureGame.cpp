@@ -59,16 +59,16 @@ int main()
     Potion healthPot("Potion", "It heals things");
 
     healthPot.Use(&player1);
-    std::cout << player1.GetHealth();
+   
 
    
    
 
     // Area Map
-    std::map<std::string, Area> areaMap;
-    areaMap["Forest"] = forest;
-    areaMap["Village"] = village;
-    areaMap["Castle"] = castle;
+    std::map<std::string, Area*> areaMap;
+    areaMap["Forest"] = forestPtr;
+    areaMap["Village"] = villagePtr;
+    areaMap["Castle"] = castlePtr;
  
     
     // Monster name map
@@ -128,7 +128,8 @@ int main()
             system("CLS");
             SetConsoleTextAttribute(h, 7);
             std::cout << std::endl;
-            areaMap[target].Look();
+            areaMap[target]->Look();
+            areaMap[target]->PrintItems();
         }
 
         // If player types "Go"
@@ -141,7 +142,7 @@ int main()
             std::cin >> target;
             system("CLS");
             SetConsoleTextAttribute(h, 7);
-            player1.Go(&areaMap[target]);
+            player1.Go(areaMap[target]);
             std::cout << std::endl;
 
         }

@@ -24,7 +24,6 @@ void Area::Look()
 	std::cout << "Description: " << std::endl;
 	std::cout << description << std::endl;
 	std::cout << std::endl;
-	PrintItems();
 	std::cout << std::endl;
 	std::cout << "Connected Areas: " << std::endl;
 	for (int i = 0; i < connectedAreas.size(); ++i)
